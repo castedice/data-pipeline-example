@@ -178,6 +178,7 @@ cython_debug/
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+.vscode
 
 # Local History for Visual Studio Code
 .history/
@@ -215,5 +216,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Mongo Database
+mongo
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,python,visualstudiocode
