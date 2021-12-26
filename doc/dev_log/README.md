@@ -2,34 +2,54 @@
 
 ## 12/26
 
-### Data Lake
+### 사전 준비
 
-Data Lake는 다양한 소스에서 들어오는 데이터를 저장합니다.
+각 컴포넌트는 추 후 활용이 용이하도록 마이크로서비스로 구현
 
-http 요청을 통해 데이터가 전송된다고 가정합니다.
+따라서 poetry로 컴포넌트 별 depandancy 관리가 필요
 
-원본 데이터를 그대로 DB에 올리게 되면 성능 문제가 발생할 수 있습니다.
+로컬에서 개발 및 테스트 후 도커라이즈
 
-따라서 데이터는 파일의 형식으로 저장하고, 데이터의 경로와 메타 정보만을 NoSQL DB에 저장합니다.
+code analyzer를 적극적으로 활용
 
-DB에 저장되는 내용은 다음과 같습니다.
+1. Code Formatter: [black](https://github.com/python/black)
+2. Code Linter: [wemake-python-style](https://github.com/wemake-services/wemake-python-styleguide)
+3. Static Type Checker: [mypy](https://github.com/python/mypy) + [monkeytype](https://github.com/Instagram/MonkeyType)
 
-1. 데이터 경로
-2. 데이터 수집 시점
-3. 데이터 저장 시점
-4. 데이터가 포함하는 키 값
+Github action에 적용되기 전까지 수동으로 진행
 
-이번 예시에서는 NoSQL은 MongoDB를 파일 형식은 JSON을 사용합니다.
+```bash
+black .
+monkeytype run main.py
+mypy .
+flake8 .
+```
 
-### Data Source Mock
+### mongodb
 
-데이터 소스를 모의 환경으로 만들어서 사용합니다.
+docker-compose.yml 작성
 
-해당 모듈은 실제 환경에서는 필요하지 않으므로 도커라이즈하지 않습니다.
+[참고 1 - mongodb](https://hub.docker.com/_/mongo)
 
-Data Lake의 성능 평가를 겸합니다.
+[참고 2 - dockerhub](https://woolbro.tistory.com/90)
 
-성능 평가를 위해 [locust](https://locust.io/)를 사용합니다.
+[참고 3 - mongo express 포함](https://gist.github.com/adamelliotfields/cd49f056deab05250876286d7657dc4b)
+
+[참고 4 - .env 파일 경로 설정](https://docs.docker.com/compose/environment-variables/): 개발, 배포, 테스트용 env 파일이 다를 때 사용 가능
+
+### api
+
+[참고 1 - logging](https://velog.io/@otzslayer/파이썬-로깅-멋지게-하기)
+
+### 느낀점
+
+별 생각 없이 맨 앞 부분의 모듈인 `data_source_mock` branch를 만들었는데, API가 없으면 테스트가 어려움을 깨달음
+
+결국 `data_source_mock` branch에서 data lake insert api와 data lake db까지 구현
+
+개발 전에 계획을 잘 세우는 것이 중요하다는 것을 다시 한 번 깨달음
+
+
 
 ## To do
 

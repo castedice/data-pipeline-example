@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "data_lake"
+version = "0.1.0"
+description = ""
+authors = ["kbpark-onepredict"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+motor = "^2.5.1"
+fastapi = "^0.70.1"
+ujson = "^5.1.0"
+uvicorn = "^0.16.0"
+aiofiles = "^0.8.0"
+python-dotenv = "^0.19.2"
+rich = "^10.16.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+wemake-python-styleguide = "^0.16.0"
+mypy = "^0.930"
+black = "^21.12b0"
+MonkeyType = "^21.5.0"
+ipykernel = "^6.6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

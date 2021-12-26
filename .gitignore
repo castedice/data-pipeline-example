@@ -139,7 +139,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+# .env
 .venv
 env/
 venv/
@@ -219,5 +219,11 @@ $RECYCLE.BIN/
 
 # Mongo Database
 mongo
+
+# Fileserver mock
+data
+
+# Code Analysis Reports
+monkeytype.sqlite3
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,python,visualstudiocode
