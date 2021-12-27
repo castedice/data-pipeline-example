@@ -1,4 +1,4 @@
-from data_lake import __version__
+from data_lake_insert import __version__
 
 
 def test_version():

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "data_lake"
+name = "data_lake_insert"
 version = "0.1.0"
 description = ""
 authors = ["kbpark-onepredict"]
