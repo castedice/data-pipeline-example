@@ -41,6 +41,8 @@ docker-compose.yml 작성
 
 [참고 1 - logging](https://velog.io/@otzslayer/파이썬-로깅-멋지게-하기)
 
+api에 로깅까지 추가하여 구현 완료
+
 ### 느낀점
 
 별 생각 없이 맨 앞 부분의 모듈인 `data_source_mock` branch를 만들었는데, API가 없으면 테스트가 어려움을 깨달음
@@ -49,9 +51,17 @@ docker-compose.yml 작성
 
 개발 전에 계획을 잘 세우는 것이 중요하다는 것을 다시 한 번 깨달음
 
+## 12/27
 
+### 모듈화 진행
+
+logging 모듈과 router를 모듈화
+
+여행 사이사이 추가로 구현할 것이 있다면 해야겠음
 
 ## To do
 
-1. [ ] git hook이나 github action으로 code analyzer 자동화
-2. [ ] commit message, pull request message template 작성
+1. [ ] (12/26) git hook이나 github action으로 code analyzer 자동화
+2. [ ] (12/26) commit message, pull request message template 작성
+3. [ ] (12/27) nfs에 데이터 저장하는 방법 고민
+4. [ ] (12/27) authorization 어떻게 할지 고민
