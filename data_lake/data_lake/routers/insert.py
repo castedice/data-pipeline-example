@@ -35,10 +35,10 @@ class Data(BaseModel):
     description: (Optional, str) 필요한 경우 데이터에 대한 설명 추가
     """
 
-    demo: bool
-    category: str
-    acq_time: datetime.datetime
-    payload: dict
+    demo: bool = True
+    category: str = "database/collection/category"
+    acq_time: datetime.datetime = datetime.datetime.now()
+    payload: dict = {"key": "value"}
     description: Optional[str] = None
 
 
@@ -97,6 +97,6 @@ async def insert_data(data: Data):
         return {"file_id": data_id, "mongodb_id": str(_id.inserted_id)}
     else:
         return {
-            "file_id": "demo: a406cec7-5a9b-44f4-a140-161d613f634d",
-            "mongodb_id": "demo: 61c92168d7ab1811c0bec4ad",
+            "file_id": "a406cec7-5a9b-44f4-a140-161d613f634d",
+            "mongodb_id": "61c92168d7ab1811c0bec4ad",
         }
