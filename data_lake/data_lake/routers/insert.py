@@ -27,6 +27,7 @@ router = APIRouter(
 
 class Data(BaseModel):
     """FastAPI에서 요구하는 데이터 형식
+    demo: (bool) API 문서에서 테스트할 때 데이터 저장을 막기 위해 사용
     category: (str) "database/collection/category"의 구조
         database와 collection은 mongodb 구조를 의미하며
         category는 추가적인 분류를 위한 정보를 의미함
