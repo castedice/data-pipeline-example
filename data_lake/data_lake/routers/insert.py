@@ -35,6 +35,7 @@ class Data(BaseModel):
     description: (Optional, str) 필요한 경우 데이터에 대한 설명 추가
     """
 
+    demo: bool
     category: str
     acq_time: datetime.datetime
     payload: dict
@@ -67,9 +68,10 @@ async def insert_data(data: Data):
             status_code=status.HTTP_400_BAD_REQUEST, detail="Payload is empty"
         )
 
-    async with aio_open(str(data_path), "w") as f:
-        await f.write(json.dumps(data.payload))
-    logger.info(f"Data is saved to file server.")
+    if not data.demo:
+        async with aio_open(str(data_path), "w") as f:
+            await f.write(json.dumps(data.payload))
+        logger.info(f"Data is saved to file server.")
 
     mongo_uri = f"mongodb://{config['MONGO_INITDB_ROOT_USERNAME']}:{config['MONGO_INITDB_ROOT_PASSWORD']}@{config['MONGO_HOST']}:{config['MONGO_PORT']}/"
     db_name = data.category.split("/")[0]
@@ -84,11 +86,17 @@ async def insert_data(data: Data):
         document["description"] = data.description
     logger.info("Document is ready.")
 
-    client = mongo.AsyncIOMotorClient(mongo_uri)
-    db = client[db_name]
-    collection = db[collection_name]
-    _id = await collection.insert_one(document)
-    client.close()
-    logger.info(f"Document inserted to MongoDB. ID:{_id.inserted_id}")
+    if not data.demo:
+        client = mongo.AsyncIOMotorClient(mongo_uri)
+        db = client[db_name]
+        collection = db[collection_name]
+        _id = await collection.insert_one(document)
+        client.close()
+        logger.info(f"Document inserted to MongoDB. ID:{_id.inserted_id}")
 
-    return {"file_id": data_id, "mongodb_id": str(_id.inserted_id)}
+        return {"file_id": data_id, "mongodb_id": str(_id.inserted_id)}
+    else:
+        return {
+            "file_id": "demo: a406cec7-5a9b-44f4-a140-161d613f634d",
+            "mongodb_id": "demo: 61c92168d7ab1811c0bec4ad",
+        }
