@@ -59,9 +59,24 @@ logging 모듈과 router를 모듈화
 
 ## 1/2
 
+### branch 이름 변경
+
+`data_source_mock` branch의 개발 내용이 매칭이 안되므로
+`data_lake_insert` branch로 이름을 변경
+
 ### 속도 향상 관련
 
 [참고 1 - gunicorn with uvicorn!?](https://facerain.club/fastapi-nginx/)
+
+`gunicorn` 설치 후 정상 작동 확인
+
+`nginx`는 도커라이즈 후에 docker-compose에서 연결하여 확인
+
+### 도커라이즈
+
+[참고 1 - poetry로 배포하기](https://medium.com/@harpalsahota/dockerizing-python-poetry-applications-1aa3acb76287)
+
+[참고 2 - fastapi 도커라이즈](https://malwareanalysis.tistory.com/139)
 
 ## To do
 
