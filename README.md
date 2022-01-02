@@ -10,7 +10,9 @@
 
 ## Usage
 
-추 후 작성
+```bash
+make setting
+```
 
 ## Components
 

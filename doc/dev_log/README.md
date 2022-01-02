@@ -70,7 +70,7 @@ logging 모듈과 router를 모듈화
 
 `gunicorn` 설치 후 정상 작동 확인
 
-`nginx`는 도커라이즈 후에 docker-compose에서 연결하여 확인
+`nginx`는 필요한 경우에 추 후 추가
 
 ### 도커라이즈
 
@@ -78,9 +78,26 @@ logging 모듈과 router를 모듈화
 
 [참고 2 - fastapi 도커라이즈](https://malwareanalysis.tistory.com/139)
 
+### locust
+
+구현 완료
+
+현재는 `MongoDb`, `DATA_LAKE_INSERT`, `DATA_SOURCE_MOCK`이 모두 하나의 머신에서 작동하여 제대로 테스트할 수 없었지만, RPS가 6개 정도까지는 충분했음
+
+### makefile
+
+makefile 작성
+
+setting: 테스트 환경 설정
+clean: 테스트 시 발생하는 용량이 큰 데이터 삭제
+build: 새롭게 빌드 후 컴포즈 업
+analysis: black, mypy, flake8 자동 검사
+
+
 ## To do
 
 1. [ ] (12/26) git hook이나 github action으로 code analyzer 자동화
 2. [ ] (12/26) commit message, pull request message template 작성
 3. [ ] (12/27) nfs에 데이터 저장하는 방법 고민
 4. [ ] (12/27) authorization 어떻게 할지 고민
+5. [ ] (1/2) ngix 추가

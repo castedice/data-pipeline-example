@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from .routers import insert
 
 # TODO: Authorization 설정
+# TODO: 필요하다면 nginx로 리버스프록시 추가
 
 app = FastAPI()
 
