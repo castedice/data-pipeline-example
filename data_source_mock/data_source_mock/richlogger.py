@@ -4,7 +4,7 @@ from pathlib import Path
 
 from rich.logging import RichHandler
 
-LOG_PATH = Path("./log.log")
+LOG_PATH = Path("../log.log")
 RICH_FORMAT = "[%(filename)s:%(lineno)s] >> %(message)s"
 FILE_HANDLER_FORMAT = "[%(asctime)s]\\t%(levelname)s\\t[%(filename)s:%(funcName)s:%(lineno)s]\\t>> %(message)s"
 

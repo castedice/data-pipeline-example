@@ -57,7 +57,11 @@ api에 로깅까지 추가하여 구현 완료
 
 logging 모듈과 router를 모듈화
 
-여행 사이사이 추가로 구현할 것이 있다면 해야겠음
+## 1/2
+
+### 속도 향상 관련
+
+[참고 1 - gunicorn with uvicorn!?](https://facerain.club/fastapi-nginx/)
 
 ## To do
 
