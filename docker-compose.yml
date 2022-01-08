@@ -36,13 +36,35 @@ services:
     depends_on:
       - mongo
 
-  # proxy:
+  # nginx:
   #   image: nginx:latest
   #   container_name: proxy
   #   restart: always
   #   ports:
   #     - ${PROXY_PORT}:80
   #   volumes:
+
+  # samba:
+  #   image: dperson/samba:latest
+  #   container_name: samba
+  #   restart: always
+  #   env_file:
+  #     - .env
+  #   environment:
+  #     TZ: 'Asia/Seoul'
+  #   ports:
+  #     - ${SAMBA_PORT_UDP}:139/udp
+  #     - ${SAMBA_PORT_TCP}:445/tcp
+  #   networks:
+  #     - SAMBA
+  #   read_only: false
+  #   tmpfs:
+  #     - /tmp
+  #   tty: true
+  #   volumes:
+  #     - ./data:/data
+  #   command: >
+  #     -u "${SAMBA_USERNAME};${SAMBA_PASSWORD}" -s "data;/data;yes;no;yes;all"
 
   data-lake-insert:
     build:
@@ -62,7 +84,9 @@ services:
       - ${DATA_LAKE_INSERT_DATA_DIR}:/data
     networks:
       - DB2INSERT
+      # - SAMBA
     depends_on:
+      # - samba
       - mongo
 
 networks:
@@ -71,3 +95,5 @@ networks:
   DB2INSERT:
     name: DB2INSERT
     driver: bridge
+  # SAMBA:
+  #   name: SAMBA

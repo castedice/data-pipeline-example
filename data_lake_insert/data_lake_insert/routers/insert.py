@@ -1,3 +1,4 @@
+# TODO: uuid를 생성하지 말고 mongo에서 생성하는 것을 사용하도록 수정
 import sys
 from pathlib import Path
 from typing import Optional
@@ -12,6 +13,7 @@ import ujson as json
 from motor import motor_asyncio as mongo
 
 from ..richlogger import set_logger, handle_exception
+
 
 config = dotenv_values(".env")
 

@@ -1,3 +1,4 @@
+# TODO: locust master와 worker를 구현하여 테스트를 해봐야 함
 import sys
 from pathlib import Path
 
@@ -9,8 +10,6 @@ from data_source_mock.richlogger import set_logger, handle_exception
 
 logger = set_logger()
 sys.excepthook = handle_exception
-
-# TODO: locust master와 worker를 구현하여 테스트를 해봐야 함
 
 
 class ArrayDataSource(FastHttpUser):
